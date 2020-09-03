@@ -1,17 +1,17 @@
 var fs = require('fs')
 var test = require('tape')
-var hyperdrive = require('hyperdrive')
+var ddrive = require('ddrive')
 var ram = require('random-access-memory')
-var hyperdiscovery = require('hyperdiscovery')
+var dwebdiscovery = require('dwebdiscovery')
 var pump = require('pump')
 
 var networkSpeed = require('.')
 
-var archive = hyperdrive(ram)
+var archive = ddrive(ram)
 var swarm
 
 archive.ready(function () {
-  swarm = hyperdiscovery(archive)
+  swarm = dwebdiscovery(archive)
 
   pump(fs.createReadStream('test.js'), archive.createWriteStream('test.js'), function (err) {
     if (err) throw err
@@ -26,10 +26,10 @@ function run () {
   test('tracks upload speed', function (t) {
     var speed = networkSpeed(archive)
 
-    var archiveClient = hyperdrive(ram, archive.key)
+    var archiveClient = ddrive(ram, archive.key)
 
     archiveClient.ready(function () {
-      var swarmClient = hyperdiscovery(archiveClient)
+      var swarmClient = dwebdiscovery(archiveClient)
 
       archive.content.once('upload', function () {
         t.ok(speed.uploadTotal && speed.uploadTotal > 0, 'has upload total')
@@ -43,11 +43,11 @@ function run () {
   })
 
   test('tracks download speed', function (t) {
-    var archiveClient = hyperdrive(ram, archive.key)
+    var archiveClient = ddrive(ram, archive.key)
     var speed = networkSpeed(archiveClient)
 
     archiveClient.ready(function () {
-      var swarmClient = hyperdiscovery(archiveClient)
+      var swarmClient = dwebdiscovery(archiveClient)
 
       archiveClient.once('content', function () {
         archiveClient.content.once('download', function () {
@@ -63,12 +63,12 @@ function run () {
   })
 
   test('zeros out speed after finishing', function (t) {
-    var archiveClient = hyperdrive(ram, archive.key)
+    var archiveClient = ddrive(ram, archive.key)
     var speedDown = networkSpeed(archiveClient)
     var stream = archiveClient.replicate({live: false})
 
     archiveClient.ready(function () {
-      var swarmClient = hyperdiscovery(archiveClient, {stream: function () { return stream}})
+      var swarmClient = dwebdiscovery(archiveClient, {stream: function () { return stream}})
 
       stream.once('close', function () {
         setTimeout(ondone, 300)
@@ -84,12 +84,12 @@ function run () {
   })
 
   test('zeros out speed after disconnection', function (t) {
-    var archiveClient = hyperdrive(ram, archive.key)
+    var archiveClient = ddrive(ram, archive.key)
     var speedDown = networkSpeed(archiveClient, {timeout: 250})
     var speedUp = networkSpeed(archive, {timeout: 250})
 
     archiveClient.ready(function () {
-      var swarmClient = hyperdiscovery(archiveClient)
+      var swarmClient = dwebdiscovery(archiveClient)
       archiveClient.metadata.once('download', function () {
         setTimeout(function () {
           t.same(speedUp.uploadSpeed, 0, 'upload speed zero')

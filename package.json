@@ -1,28 +1,28 @@
 {
-  "name": "hyperdrive-network-speed",
-  "version": "2.1.0",
-  "description": "track hyperdrive archive upload and download speeds",
+  "name": "ddrive-network-speed",
+  "version": "1.0.0",
+  "description": "track ddrive archive upload and download speeds",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js | tap-spec"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joehand/hyperdrive-network-speed.git"
+    "url": "git+https://github.com/joehand/ddrive-network-speed.git"
   },
   "author": "Joe Hand <joe@hand.email> (https://joeahand.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joehand/hyperdrive-network-speed/issues"
+    "url": "https://github.com/joehand/ddrive-network-speed/issues"
   },
-  "homepage": "https://github.com/joehand/hyperdrive-network-speed#readme",
+  "homepage": "https://github.com/joehand/ddrive-network-speed#readme",
   "dependencies": {
     "debug": "^3.1.0",
     "speedometer": "^1.0.0"
   },
   "devDependencies": {
-    "hyperdiscovery": "^7.0.0",
-    "hyperdrive": "^9.0.0",
+    "dwebdiscovery": "git://github.com/DistributedWeb/dwebdiscovery.git#a1cfcae2faa71c6a22aae9fd04a46f8b938289cc",
+    "ddrive": "git://github.com/DistributedWeb/ddrive.git#0253e97b45d83aa74498acecc1fc85fb74427dc8",
     "pump": "^3.0.0",
     "random-access-memory": "^2.3.0",
     "standard": "^11.0.0",

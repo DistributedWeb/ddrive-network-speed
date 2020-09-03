@@ -1,6 +1,6 @@
 var assert = require('assert')
 var speedometer = require('speedometer')
-var debug = require('debug')('dat-network')
+var debug = require('debug')('dwebx-network')
 
 module.exports = function (archive, opts) {
   assert.ok(archive, 'archive required')
