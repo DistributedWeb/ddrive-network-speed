@@ -1,21 +1,21 @@
 {
   "name": "ddrive-network-speed",
   "version": "1.0.0",
-  "description": "track ddrive archive upload and download speeds",
+  "description": "Module for measuring the download/upload speed of a dDrive",
   "main": "index.js",
   "scripts": {
     "test": "tape test.js | tap-spec"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joehand/ddrive-network-speed.git"
+    "url": "https://github.com/distributedweb/ddrive-network-speed.git"
   },
-  "author": "Joe Hand <joe@hand.email> (https://joeahand.com/)",
+  "author": "Peeps Labs <peepslabs.gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joehand/ddrive-network-speed/issues"
+    "url": "https://github.com/distributedweb/ddrive-network-speed/issues"
   },
-  "homepage": "https://github.com/joehand/ddrive-network-speed#readme",
+  "homepage": "https://dwebx.org",
   "dependencies": {
     "debug": "^3.1.0",
     "speedometer": "^1.0.0"
