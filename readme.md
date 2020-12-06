@@ -2,7 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/joehand/ddrive-network-speed.svg?style=flat-square)](https://travis-ci.org/joehand/ddrive-network-speed) [![npm](https://img.shields.io/npm/v/ddrive-network-speed.svg?style=flat-square)](https://npmjs.org/package/ddrive-network-speed)
 
-Get upload and download speeds for a ddrive archive.
+Get upload and download speeds for a dDrive archive.
 
 ## Usage
 
@@ -21,7 +21,7 @@ setInterval(function () {
 
 ### `var speed = networkSpeed(archive, [opts])`
 
-* `archive` is a ddrive archive.
+* `archive` is a dDrive archive.
 * `opts.timeout` is the only option. Speed will be reset to zero after the timeout.
 
 #### `speed.uploadSpeed`
